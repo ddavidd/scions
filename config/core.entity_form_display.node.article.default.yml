@@ -5,15 +5,19 @@ dependencies:
   config:
     - field.field.node.article.body
     - field.field.node.article.comment
+    - field.field.node.article.field_audio
     - field.field.node.article.field_image
     - field.field.node.article.field_tags
+    - field.field.node.article.field_video
     - image.style.thumbnail
     - node.type.article
   module:
     - comment
+    - file
     - image
     - path
     - text
+    - video
 _core:
   default_config_hash: vPb_yvhA-xuNoV_yOmOwYxGuHNRIH1CoMK2qi7BSga0
 id: node.article.default
@@ -42,6 +46,13 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_audio:
+    weight: 121
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: file_generic
+    region: content
   field_image:
     type: image_image
     weight: 4
@@ -59,6 +70,21 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_video:
+    weight: 122
+    settings:
+      allowed_providers:
+        youtube: youtube
+        instagram: 0
+        vimeo: 0
+        dailymotion: 0
+        facebook: 0
+        vine: 0
+      file_directory: 'media/video-thumbnails/[date:custom:Y]'
+      uri_scheme: public
+    third_party_settings: {  }
+    type: video_embed
+    region: content
   path:
     type: path
     weight: 30
