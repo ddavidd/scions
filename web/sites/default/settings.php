@@ -36,3 +36,18 @@ if (file_exists($local_settings)) {
  * modifying settings.php.
  */
 $settings['install_profile'] = 'standard';
+
+/**
+ * Config Split settings
+ * Note: Config is outside Drupal root (see above) but the split config is *inside* Drupal root
+ * It would be nice to place these next to each other, preferably outside the Drupal root.
+ */
+
+$env = $_ENV['PANTHEON_ENVIRONMENT'];
+
+// If local (lando) or Pantheon dev
+if (isset($env) && ($env == 'lando' || $env == 'dev') ) {
+  $config['config_split.config_split.dev']['status'] = true;
+} else {
+  $config['config_split.config_split.dev']['status'] = false;
+}
