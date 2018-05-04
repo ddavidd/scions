@@ -6,6 +6,8 @@ config:
   id: 29af9bf2-a2f7-48cd-a0cd-884ab4b52ca6
 
 services:
+  appserver:
+    webroot: web
   node-cli:
     type: node:6.10
     globals:
@@ -18,3 +20,7 @@ tooling:
     service: node-cli
   gulp:
     service: node-cli
+
+post-start:
+  - appserver: cd $LANDO_MOUNT && composer install
+  - appserver: cd $LANDO_WEBROOT/themes/custom/scions && npm install && gulp build

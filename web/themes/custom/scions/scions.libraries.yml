@@ -1,0 +1,8 @@
+global:
+  css:
+    theme:
+      dist/css/scions.css: {}
+  js:
+    dist/js/scions.js: {}
+  dependencies:
+    - core/jquery

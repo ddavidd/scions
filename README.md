@@ -8,8 +8,6 @@ Hey! It's the Scions of Zion Drupal 8 site!
 
 # Getting started
   - Save GitLab, CircleCI and Pantheon SSH keys locally. (Optional, but super helpful.)
-  - You will need to have Composer, Git, Terminus and Lando locally.
   - Clone the repo. `git clone https://github.com/ddavidd/scions`
-  - Install Composer dependencies. `composer install`
-  - Initiate a new local Lando Pantheon site. `lando init pantheon`
-  - Pull down database and files. `lando pull`
+  - Start Lando. `lando start` Then, pull down database and files. `lando pull`
+  - If all goes well Lando will install composer dependencies, theme node packages and build the theme assets.

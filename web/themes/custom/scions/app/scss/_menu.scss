@@ -1,0 +1,64 @@
+.dropdown.menu .is-active > a {
+  color: $black;
+}
+.dropdown.menu > li.is-dropdown-submenu-parent > a:after {
+  border-color: $white transparent transparent;
+}
+
+.menu--main {
+  justify-content: end;
+  background-color: $secondary-color;
+  margin: 3px 0;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 14px;
+
+  li a {
+    color: $white;
+
+    &:hover {
+      color: $black;
+    }
+  }
+
+  .is-active {
+    border-bottom: 7px solid darken($secondary-color, 10%);
+    margin-bottom: -7px;
+
+    a {
+      color: $white;
+    }
+  }
+
+  .is-dropdown-submenu {
+    border: none;
+    margin: 0;
+    background-color: lighten($secondary-color, 5px);
+  }
+}
+
+.menu--account, .menu--tasks {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 14px;
+  a {
+    color: $secondary-color;
+  }
+
+  .is-active {
+    background-color: #F0F0F0;
+    color: $black;
+  }
+
+  li:hover {
+    background-color: #F0F0F0;
+    color: $black;
+  }
+}
+
+.menu--account {
+  border:1px solid #F0F0F0;
+  border-radius: 10px;
+
+  li:first-child:hover {
+    border-radius: 10px 0 0 10px;
+  }
+}
