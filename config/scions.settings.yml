@@ -1,0 +1,5 @@
+logo:
+  path: themes/custom/scions/logo.png
+  use_default: false
+_core:
+  default_config_hash: 5IeLRlPyZCikPqswOZcx9XvwgNJiVWU-Mbz2uxNSP9s

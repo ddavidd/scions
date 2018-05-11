@@ -1,0 +1,22 @@
+uuid: 1f449521-6414-4d23-a208-eb7005f81d7a
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - scions
+_core:
+  default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
+id: scions_messages
+theme: scions
+region: featured_top
+weight: -6
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

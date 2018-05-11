@@ -1,0 +1,20 @@
+uuid: 11e8ca8b-2ac8-4c95-b19e-a8602ae03ca5
+langcode: en
+status: true
+dependencies:
+  theme:
+    - scions
+_core:
+  default_config_hash: 7rR9chwXvdM2H8OYMAYx9Zj3GGlPMrZp_M3ZA4thYTk
+id: scions_page_title
+theme: scions
+region: content
+weight: -7
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }
