@@ -8,6 +8,7 @@ config:
 services:
   appserver:
     webroot: web
+    xdebug: true
   node-cli:
     type: node:6.10
     globals:
@@ -21,6 +22,6 @@ tooling:
   gulp:
     service: node-cli
 
-post-start:
-  - appserver: cd $LANDO_MOUNT && composer install
-  - appserver: cd $LANDO_WEBROOT/themes/custom/scions && npm install && gulp build
+#post-start:
+#  - appserver: cd /app && composer install
+#  - appserver: cd /app/web/themes/custom/scions && npm install && gulp build

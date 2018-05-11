@@ -1,0 +1,12 @@
+<?php
+
+function scions_preprocess_html(&$variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  if($node && $node->getType("Article")) {
+     $variables['node'] = $node;
+    // Set body background-image
+    $bg_image = file_url_transform_relative(file_create_url($node->field_image->entity->getFileUri()));
+    $variables['attributes']->setAttribute("style", "background-image:URL('$bg_image');");
+  }
+}
