@@ -1,8 +1,281 @@
-/* FONTS */
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Cabin+Condensed:600');
 
-/* COLORS */
-$primary-color: #00BBE0;
-$secondary-color: #AABBBE;
-$white: #FFF;
-$black: #000;
+#my-wrapper {
+  background-size: cover;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cabin Condensed', sans-serif;
+}
+
+.copyright{
+  margin: 20px 0;
+}
+
+#top-nav {
+  z-index: 10;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  color: #FFF;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+// Top menu
+.top.menu {
+  display: none;
+  position: inherit;
+  background-color: $white;
+}
+
+.header {
+  div:last-child {
+    position: relative;
+  }
+
+  h1 {
+    color: #fff;
+  }
+
+  @include breakpoint(medium up) {
+    img {
+      float: left;
+    }
+    h1 {
+      position: absolute;
+      bottom: 30px;
+      left: 270px;
+      margin: 0;
+      padding-left: 20px;
+      line-height: 1;
+
+      border-left: 14px solid #FFF;
+
+      br {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  @include breakpoint(small only) {
+    text-align: center;
+
+    h1 {
+      margin: 10px 0 30px;
+      font-style: italic;
+
+      &:before, &:after {
+        content:"\"";
+      }
+
+      a {
+        color: #FFF;
+        float: left;
+        margin-right: 10px;
+
+      }
+    }
+  }
+  @include breakpoint(medium up) {
+    h1 {
+      a {
+        display: none;
+      }
+    }
+  }
+
+  img {
+    width: 243px;
+    margin: 20px 0;
+    margin-left: -8px;
+  }
+}
+
+// Post thumbnail cover (Couldn't think of a better label.) :/
+.cover {
+  position: relative;
+  text-align: center;
+  color: #FFF;
+  overflow: hidden;
+
+  &.new:after {
+    content: "NEW!";
+    font-family: 'Cabin Condensed', sans-serif;
+    color: #FFF;
+    background-color: $green;
+    transform: rotate(37deg);
+    display: inline-block;
+    position: absolute;
+    top: 6px;
+    right: -29px;
+    font-size: 9pt;
+    width: 90px;
+    box-shadow: -5px 5px 5px RGBA(0,0,0,.5);
+  }
+
+  img {
+    width: 100%;
+    transition: all .25s ease;
+  }
+
+  a {
+    color: #FFF;
+
+    &:hover > img,
+    &:hover > div img {
+      transform: scale(1.1);
+      filter: blur(2px) brightness(.5);
+    }
+  }
+
+  footer {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+
+    h2 {
+      padding:1px;
+      line-height: 1;
+    }
+
+    p {
+      padding: 0;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    p {
+      font-size: 9pt;
+      letter-spacing: 2px;
+    }
+  }
+}
+
+.posts {
+  margin-top: 15px;
+
+  .cell {
+    margin-bottom: 30px;
+  }
+
+  article {
+    @extend .cover;
+  }
+}
+
+.callout {
+  border: 0;
+  p {
+    line-height: 1.2;
+  }
+}
+
+//.sidebar {
+//  > .cell, > h2 {
+//    margin-top: 20px;
+//  }
+//}
+
+.social {
+  svg {
+    color: $white;
+    margin: 3px;
+  }
+}
+
+.feature.button {
+  background-color: #76B66C;
+  padding: 17px 23px;
+  border-radius: 5px;
+  font-family: "Cabin Condensed", sans-serif;
+  font-size: 20pt;
+}
+
+.tags {
+  margin-top: 20px;
+
+  &.full { // override :P
+    margin-top: 20px;
+  }
+
+  ul {
+    list-style-type: none;
+    margin-left: 0;
+
+    li {
+      display: inline-block;
+      float: left;
+      margin: 5px;
+      padding: 0 8px;
+
+      transition: background-color 0.5s ease;
+      background-color: $white;
+      border-radius: 5px;
+      font-size: 80%;
+
+      &:hover {
+        background-color: $green;
+
+        a {
+          color: $white;
+        }
+      }
+
+      &:first-child {
+        margin-left: 0;
+        padding-left: 0;
+        background-color: transparent;
+
+        a {
+          color: $black;
+        }
+      }
+
+    }
+    a {
+      color: $black;
+    }
+  }
+}
+
+// Map
+.map {
+  width: 100%;
+  height: 450px;
+  border: none;
+}
+
+// Title area for node types
+.title {
+  @include breakpoint(small down) {
+    text-align: center;
+    border-bottom: 1px solid $black;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+  }
+
+  @include breakpoint(medium) {
+    margin: 100px 0;
+  }
+
+  h2, p {
+    font-family: "Helvetica", sans-serif;
+    color: $white;
+    text-shadow: 1px 1px 2px RGBA(0,0,0,.8);
+    line-height: 1;
+  }
+  h2 {
+    font-weight: 600;
+    font-size: 40pt;
+  }
+  p {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+}
