@@ -1,0 +1,41 @@
+uuid: 4f821167-2cf5-4180-99c0-5557af6707b6
+langcode: en
+status: true
+dependencies:
+  module:
+    - image_effects
+name: background
+label: 'Background (1200w)'
+effects:
+  693bb898-5785-46b7-bc98-aa4572b64597:
+    uuid: 693bb898-5785-46b7-bc98-aa4572b64597
+    id: image_scale
+    weight: -10
+    data:
+      width: 1200
+      height: null
+      upscale: false
+  cb6b8a40-e624-4bca-a239-5608e0fdb1ec:
+    uuid: cb6b8a40-e624-4bca-a239-5608e0fdb1ec
+    id: image_effects_watermark
+    weight: 3
+    data:
+      watermark_image: sites/default/files/media/images/theme/gradient.png
+      watermark_width: 100%
+      watermark_height: ''
+      placement: center-bottom
+      x_offset: ''
+      y_offset: ''
+      opacity: 100
+  2a634be6-c53a-42bd-8a2d-330eeadfb673:
+    uuid: 2a634be6-c53a-42bd-8a2d-330eeadfb673
+    id: image_effects_contrast
+    weight: 4
+    data:
+      level: -20
+  fd339032-0792-4310-9c3e-1c470e6904e1:
+    uuid: fd339032-0792-4310-9c3e-1c470e6904e1
+    id: image_effects_brightness
+    weight: 5
+    data:
+      level: 20

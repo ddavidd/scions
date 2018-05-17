@@ -1,5 +1,14 @@
 logo:
   path: themes/custom/scions/logo.png
-  use_default: false
+  use_default: 0
 _core:
   default_config_hash: 5IeLRlPyZCikPqswOZcx9XvwgNJiVWU-Mbz2uxNSP9s
+features:
+  node_user_picture: 1
+  comment_user_picture: 1
+  comment_user_verification: 1
+  favicon: 1
+background_file:
+  - '4'
+favicon:
+  use_default: 1
