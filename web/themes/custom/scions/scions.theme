@@ -1,12 +1,49 @@
 <?php
 
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\file\Entity\File;
+use Drupal\image\Entity\ImageStyle;
+
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ */
+function scions_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
+  $form['theme_settings']['background_file'] = array(
+    '#type'     => 'managed_file',
+    '#title'    => 'Background Image',
+    '#description' => 'The default background image.',
+    '#required' => FALSE,
+    '#upload_location' => file_default_scheme() . '://media/images/theme/',
+    '#default_value' => theme_get_setting('background_file'),
+    '#upload_validators' => array(
+      'file_validate_extensions' => array('gif png jpg jpeg'),
+    ),
+  );
+}
+
 function scions_preprocess_html(&$variables) {
   $node = \Drupal::routeMatch()->getParameter('node');
 
-  if($node && $node->getType() == "article") {
-     $variables['node'] = $node;
-    // Set body background-image
-    $bg_image = file_url_transform_relative(file_create_url($node->field_image->entity->getFileUri()));
-    $variables['attributes']->setAttribute("style", "background-image:URL('$bg_image');");
+  // Set body background image from node
+  if($node && $node->field_image->entity) {
+    // $bg_image = file_url_transform_relative(file_create_url($node->field_image->entity->getFileUri()));
+    $bg_path = $node->field_image->entity->getFileUri();
+    echo "hi: $bg_path<br>";
+    $bg_url = ImageStyle::load('background')->buildUrl($bg_path);
+//    $bg_image = ImageStyle::load('background')->buildUrl($bg_path);
+    echo "hi: $bg_url";
+    $variables['attributes']->setAttribute("style", "background-image:URL('$bg_url');");
   }
+
+  // Otherwise, set body background image from theme
+  else if($fid = theme_get_setting('background_file')) {
+    $path = file_create_url(file::load($fid[0])->getFileUri());
+    $variables['attributes']->setAttribute("style", "background-image:URL('$path');");
+  }
+
+  // Otherwise, no background image image. (test with red background)
+  else {
+    $variables['attributes']->setAttribute("style", "background-color: #bbF1F1");
+  }
+
 }
