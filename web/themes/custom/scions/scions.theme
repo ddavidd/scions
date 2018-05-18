@@ -21,26 +21,34 @@ function scions_form_system_theme_settings_alter(&$form, FormStateInterface $for
   );
 }
 
+/**
+ * @inheritdoc
+ */
 function scions_preprocess_html(&$variables) {
   $node = \Drupal::routeMatch()->getParameter('node');
-
+  
   // Set body background image from node
   if($node && $node->field_image->entity) {
+    // Get background_file Uri
     $bg_path = $node->field_image->entity->getFileUri();
-    $bg_url = ImageStyle::load('background')->buildUrl($bg_path);
+    // Check for image style, if none just use raw image
+    $bg_url = (ImageStyle::load('background'))?ImageStyle::load('background')->buildUrl($bg_path):file_create_url($bg_path);
+    // Set body background
     $variables['attributes']->setAttribute("style", "background-image:URL('$bg_url');");
   }
-
+  
   // Otherwise, set body background image from theme
   else if($fid = theme_get_setting('background_file')) {
+    // Get background_file Uri
     $bg_path = file::load($fid[0])->getFileUri();
-    $bg_url = ImageStyle::load('background')->buildUrl($bg_path);
+    // Check for image style, if none just use raw image
+    $bg_url = (ImageStyle::load('background'))?ImageStyle::load('background')->buildUrl($bg_path):file_create_url($bg_path);
+    // Set body background
     $variables['attributes']->setAttribute("style", "background-image:URL('$bg_url');");
   }
-
-  // Otherwise, no background image image. (test with red background)
+  
+  // Otherwise, no background image. (Default to gray)
   else {
-    $variables['attributes']->setAttribute("style", "background-color: #bbF1F1");
+    $variables['attributes']->setAttribute("style", "background-color: #f1f1f1;");
   }
-
 }
