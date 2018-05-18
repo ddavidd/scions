@@ -6,3 +6,4 @@ global:
     dist/js/scions.js: {}
   dependencies:
     - core/jquery
+    - core/drupalSettings

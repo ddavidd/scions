@@ -9,7 +9,7 @@ _core:
 id: scions_local_actions
 theme: scions
 region: content
-weight: -7
+weight: -6
 provider: null
 plugin: local_actions_block
 settings:

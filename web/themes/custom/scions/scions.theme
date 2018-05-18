@@ -21,6 +21,19 @@ function scions_form_system_theme_settings_alter(&$form, FormStateInterface $for
   );
 }
 
+function scions_preprocess_page(&$variables) {
+  // hebcal.com
+  $JSON = file_get_contents("http://www.hebcal.com/shabbat/?cfg=json&geo=zip&zip=60914&m=50");
+  $hebcal = json_decode($JSON);
+  $location = $hebcal->title;
+  $candle = $hebcal->items[0]->date;
+  $formatted = date_format(date_create($candle), "g:ia");
+  // echo kint($hebcal);
+  // echo "Shabbat Candle Lighting: " . date_format(date_create($candle), "g:ia");
+  $variables['location'] = $location;
+  $variables['candle_lighting'] = $formatted;
+}
+
 /**
  * @inheritdoc
  */
@@ -40,7 +53,7 @@ function scions_preprocess_html(&$variables) {
   // Otherwise, set body background image from theme
   else if($fid = theme_get_setting('background_file')) {
     // Get background_file Uri
-    $bg_path = file::load($fid[0])->getFileUri();
+    $bg_path = File::load($fid[0])->getFileUri();
     // Check for image style, if none just use raw image
     $bg_url = (ImageStyle::load('background'))?ImageStyle::load('background')->buildUrl($bg_path):file_create_url($bg_path);
     // Set body background
