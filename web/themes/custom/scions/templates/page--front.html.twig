@@ -81,8 +81,9 @@
       {{ page.header_right }}
       
       <div class="callout">
-        <h2>Candle Lighting</h2>
-        <p>{{ candle_lighting }} in {{ location }}</p>
+        <p><b>{{ candle_lighting }}</b><br /><small>for {{ location }}</small><br /></p>
+        <p><b>{{ havdalah }}</b><br /><small>for {{ location }}</small></p>
+        {#<p><small><a href="http://www.hebcal.com">Click here to find times in your area.</a></small></p>#}
       </div>
       
       <div class="social">
@@ -105,12 +106,20 @@
 
 {{ page.help }}
 
+<!-- Posts -->
+<div class="posts grid-container">
+  <section class="grid-x grid-margin-x">
+    {{ page.content }}
+  </section>
+</div>
+
 <main role="main" class="grid grid-container">
   <div class="grid-x grid-margin-x">
   <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
   <div class="layout-content cell auto">
-    {{ page.content }}
+    <!-- Posts -->
+    {#{{ page.content }}#}
   </div>
 
   {# SIDEBAR #}

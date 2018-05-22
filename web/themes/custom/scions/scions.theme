@@ -23,15 +23,23 @@ function scions_form_system_theme_settings_alter(&$form, FormStateInterface $for
 
 function scions_preprocess_page(&$variables) {
   // hebcal.com
-  $JSON = file_get_contents("http://www.hebcal.com/shabbat/?cfg=json&geo=zip&zip=60914&m=50");
+  $JSON = file_get_contents("http://www.hebcal.com/shabbat/?cfg=json&geo=zip&zip=46360");
   $hebcal = json_decode($JSON);
   $location = $hebcal->title;
-  $candle = $hebcal->items[0]->date;
-  $formatted = date_format(date_create($candle), "g:ia");
-  // echo kint($hebcal);
+  //$candle = date_format(date_create($hebcal->items[1]->date), "g:ia");
+  $candle = $hebcal->items[2]->title;
+  // $havdalah = date_format(date_create($hebcal->items[3]->date), "g:ia");
+  $havdalah = $hebcal->items[1]->title;
+  $parsha_array = explode(" ", $hebcal->items[3]->title);
+  $parsha = $parsha_array[count($parsha_array)-1];
+  
+  // echo kint($hebcal->items);
   // echo "Shabbat Candle Lighting: " . date_format(date_create($candle), "g:ia");
+  
   $variables['location'] = $location;
-  $variables['candle_lighting'] = $formatted;
+  $variables['candle_lighting'] = $candle;
+  $variables['havdalah'] = $havdalah;
+  $variables['parsha_title'] = $parsha;
 }
 
 /**

@@ -9,6 +9,6 @@ features:
   comment_user_verification: 1
   favicon: 1
 background_file:
-  - '5'
+  - '6'
 favicon:
   use_default: 1
